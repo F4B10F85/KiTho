@@ -89,8 +89,26 @@
       background-image: url('https://i.ibb.co/7NSYgCBW/KT-HAR-CHO-002-KT-COL-CHO-055-KT-HAR-GRN-003-KT-COL-CHG-057.jpg');
       background-size: cover;
       background-position: center;
+      position: relative;
       color: white;
     }
+
+    .chiSiamo-bg::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* cambia questo valore */
+      z-index: 0;
+    }
+
+    .home-bg > * {
+      position: relative;
+      z-index: 1;
+    }
+    
   </style>
 </head>
 
