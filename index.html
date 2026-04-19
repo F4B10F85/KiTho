@@ -134,7 +134,40 @@
       margin-top: 5px;
 }
 
-      
+
+.contact-box {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+}
+
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.contact-box button {
+  width: 100%;
+  padding: 12px;
+  background: #00645a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.contact-box button:hover {
+  background: #004d45;
+}
+
+    
   </style>
 </head>
 
@@ -280,6 +313,8 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
     </div>
   </div>
 </div>
+ 
+  
   <div id="contatti" class="pagina white-bg">
     <h1>Contatti</h1>
     <p>KiTho PET<br>
@@ -290,7 +325,24 @@ Via W.A. Mozart 6,<br>
 +39 340 8984176<br>
 <br>
 commercial@kithopet.com</p>
+ <div class="contact-box">
+    <form action="mailto:commercial@kithopet.com" method="post" enctype="text/plain">
+      
+      <input type="text" name="Nome" placeholder="Nome" required>
+      
+      <input type="text" name="Cognome" placeholder="Cognome" required>
+      
+      <input type="email" name="Email" placeholder="Email" required>
+      
+      <input type="tel" name="Telefono" placeholder="Telefono">
+      
+      <textarea name="Messaggio" placeholder="Scrivi il tuo messaggio..." rows="5" required></textarea>
+      
+      <button type="submit">Invia</button>
+
+    </form>
   </div>
+</div>
 
   <div id="carrello" class="pagina">
     <h1>Carrello</h1>
