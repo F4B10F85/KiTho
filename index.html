@@ -2,24 +2,22 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menù</title>
+  <title>KiTHO PET</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial;
-      background-image: url('https://i.ibb.co/7JTMF0rb/DSC1225.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      color: white;
+      background-color: #f5f5f5;
     }
 
+    /* TOP BAR */
     .topbar {
       display: flex;
       align-items: center;
-      background: rgba(0,100,90,0.85);
+      background: rgba(0,0,0,0.8);
       padding: 10px;
+      color: white;
     }
 
     .menu-btn {
@@ -31,10 +29,11 @@
       cursor: pointer;
     }
 
+    /* MENU */
     .menu {
       display: none;
       flex-direction: column;
-      background: rgba(0,172,156,0.85);
+      background: rgba(0,0,0,0.95);
       position: absolute;
       top: 50px;
       left: 0;
@@ -65,13 +64,25 @@
       font-size: 14px;
     }
 
+    /* PAGINE */
     .pagina {
       display: none;
       padding: 20px;
+      min-height: 100vh;
+      background-color: #3EC2A9;
+      color: black;
     }
 
     .attiva {
       display: block;
+    }
+
+    /* HOME con immagine */
+    .home-bg {
+      background-image: url('https://i.ibb.co/7JTMF0rb/DSC1225.jpg'); /* METTI IL TUO LINK GIUSTO */
+      background-size: cover;
+      background-position: center;
+      color: white;
     }
   </style>
 </head>
@@ -81,7 +92,7 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <h2>Home</h2>
+    <h2>KiTHO PET</h2>
   </div>
 
   <!-- MENU -->
@@ -107,12 +118,13 @@
 
   </div>
 
-  <div id="home" class="pagina attiva">
-  <h1>KiTho PET</h1>
-  <p>I prodotti per il tuo amico a quattro zampe</p>
+  <!-- HOME -->
+  <div id="home" class="pagina attiva home-bg">
+    <h1>KiTHO PET</h1>
+    <p>Scrivi qui il tuo testo iniziale</p>
   </div>
-  
-  <!-- PAGINE -->
+
+  <!-- ALTRE PAGINE -->
   <div id="chiSiamo" class="pagina">
     <h1>Chi siamo</h1>
   </div>
