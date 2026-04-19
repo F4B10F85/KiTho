@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KiTho</title>
+  <title>KiTHO PET</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+    }
+
+    nav {
+      background: #333;
+      padding: 10px;
+    }
+
+    nav button {
+      margin: 5px;
+      padding: 10px;
+      color: white;
+      background: #555;
+      border: none;
+      cursor: pointer;
+    }
+
+    .pagina {
+      display: none;
+      padding: 20px;
+    }
+
+    .attiva {
+      display: block;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>La mia prima app</h1>
-  <button onclick="ciao()">Cliccami</button>
+
+  <nav>
+    <button onclick="mostra('home')">Home</button>
+    <button onclick="mostra('prodotti')">Prodotti</button>
+    <button onclick="mostra('contatti')">Contatti</button>
+  </nav>
+
+  <div id="home" class="pagina attiva">
+    <h1>KiTHO PET</h1>
+    <p>Benvenuto nell'app</p>
+  </div>
+
+  <div id="prodotti" class="pagina">
+    <h1>Prodotti</h1>
+    <p>Lista prodotti qui</p>
+  </div>
+
+  <div id="contatti" class="pagina">
+    <h1>Contatti</h1>
+    <p>Info contatti</p>
+  </div>
 
   <script>
-    function ciao() {
-      alert("Ok, funziona davvero.");
+    function mostra(pagina) {
+      const pagine = document.querySelectorAll(".pagina");
+      pagine.forEach(p => p.classList.remove("attiva"));
+
+      document.getElementById(pagina).classList.add("attiva");
     }
   </script>
+
 </body>
 </html>
