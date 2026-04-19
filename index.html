@@ -98,7 +98,30 @@
       color: white;
     }
 
-       
+    .color-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .color-box {
+      width: 40px;
+      height: 40px;
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+
+    .color-box:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+    .white-bg {
+  background-color: white;
+  color: black;
+}
+    
   </style>
 </head>
 
@@ -188,9 +211,20 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
     <h1>Cinture</h1>
   </div>
 
-  <div id="personalizzazione" class="pagina">
-    <h1>Personalizzazione</h1>
+  <div id="personalizzazione" class="pagina white-bg">
+  <h1>Personalizzazione</h1>
+
+  <p>Scegli il colore della pelle per il tuo prodotto:</p>
+
+  <div class="color-container">
+    <div class="color-box" style="background-color: brown;"></div>
+    <div class="color-box" style="background-color: black;"></div>
+    <div class="color-box" style="background-color: beige;"></div>
+    <div class="color-box" style="background-color: darkgreen;"></div>
+    <div class="color-box" style="background-color: navy;"></div>
+    <div class="color-box" style="background-color: burgundy;"></div>
   </div>
+</div>
 
   <div id="contatti" class="pagina">
     <h1>Contatti</h1>
