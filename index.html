@@ -3,31 +3,60 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KiTHO PET</title>
+
   <style>
     body {
-  margin: 0;
-  font-family: Arial;
-  background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  color: white;
-}
+      margin: 0;
+      font-family: Arial;
+      background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      color: white;
+    }
 
-    nav {
-      background: #333;
+    /* TOP BAR */
+    .topbar {
+      display: flex;
+      align-items: center;
+      background: rgba(0,0,0,0.7);
       padding: 10px;
     }
 
-    nav button {
-      margin: 5px;
-      padding: 10px;
-      color: white;
-      background: #555;
+    .menu-btn {
+      font-size: 24px;
+      background: none;
       border: none;
+      color: white;
+      margin-right: 10px;
       cursor: pointer;
     }
 
+    /* MENU */
+    .menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(0,0,0,0.9);
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 200px;
+    }
+
+    .menu button {
+      padding: 15px;
+      border: none;
+      background: none;
+      color: white;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .menu button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* PAGINE */
     .pagina {
       display: none;
       padding: 20px;
@@ -41,33 +70,50 @@
 
 <body>
 
-  <nav>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <h2>KiTHO PET</h2>
+  </div>
+
+  <!-- MENU -->
+  <div id="menu" class="menu">
     <button onclick="mostra('home')">Home</button>
     <button onclick="mostra('prodotti')">Prodotti</button>
     <button onclick="mostra('contatti')">Contatti</button>
-  </nav>
+  </div>
 
+  <!-- PAGINE -->
   <div id="home" class="pagina attiva">
-    <h1>KiTHO PET</h1>
-    <p>Benvenuto nell'app</p>
+    <h1>Benvenuto su KiTHO PET</h1>
+    <p>Questa è la home dell'app</p>
   </div>
 
   <div id="prodotti" class="pagina">
     <h1>Prodotti</h1>
-    <p>Lista prodotti qui</p>
+    <p>Qui andranno i prodotti</p>
   </div>
 
   <div id="contatti" class="pagina">
     <h1>Contatti</h1>
-    <p>Info contatti</p>
+    <p>Qui i contatti</p>
   </div>
 
+  <!-- SCRIPT -->
   <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
     function mostra(pagina) {
       const pagine = document.querySelectorAll(".pagina");
       pagine.forEach(p => p.classList.remove("attiva"));
 
       document.getElementById(pagina).classList.add("attiva");
+
+      // chiude il menu dopo il click (mobile-friendly)
+      document.getElementById("menu").style.display = "none";
     }
   </script>
 
