@@ -15,7 +15,6 @@
       color: white;
     }
 
-    /* TOP BAR */
     .topbar {
       display: flex;
       align-items: center;
@@ -32,15 +31,14 @@
       cursor: pointer;
     }
 
-    /* MENU */
     .menu {
       display: none;
       flex-direction: column;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.95);
       position: absolute;
       top: 50px;
       left: 0;
-      width: 200px;
+      width: 250px;
     }
 
     .menu button {
@@ -50,13 +48,23 @@
       color: white;
       text-align: left;
       cursor: pointer;
+      width: 100%;
     }
 
     .menu button:hover {
       background: rgba(255,255,255,0.2);
     }
 
-    /* PAGINE */
+    .submenu {
+      display: none;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .submenu button {
+      padding-left: 30px;
+      font-size: 14px;
+    }
+
     .pagina {
       display: none;
       padding: 20px;
@@ -78,25 +86,69 @@
 
   <!-- MENU -->
   <div id="menu" class="menu">
-    <button onclick="mostra('home')">Home</button>
-    <button onclick="mostra('prodotti')">Prodotti</button>
+
+    <button onclick="mostra('chiSiamo')">Chi siamo</button>
+
+    <button onclick="toggleSubmenu()">Prodotti ▼</button>
+    <div id="submenuProdotti" class="submenu">
+      <button onclick="mostra('collari')">Collari</button>
+      <button onclick="mostra('guinzagli')">Guinzagli</button>
+      <button onclick="mostra('pettorine')">Pettorine</button>
+      <button onclick="mostra('giochi')">Giochi</button>
+      <button onclick="mostra('poopbag')">Poop Bag</button>
+      <button onclick="mostra('capezze')">Cappezze</button>
+      <button onclick="mostra('cinture')">Cinture</button>
+    </div>
+
+    <button onclick="mostra('personalizzazione')">Personalizzazione</button>
     <button onclick="mostra('contatti')">Contatti</button>
+    <button onclick="mostra('carrello')">Carrello</button>
+
   </div>
 
   <!-- PAGINE -->
-  <div id="home" class="pagina attiva">
-    <h1>Benvenuto su KiTHO PET</h1>
-    <p>Questa è la home dell'app</p>
+  <div id="chiSiamo" class="pagina attiva">
+    <h1>Chi siamo</h1>
   </div>
 
-  <div id="prodotti" class="pagina">
-    <h1>Prodotti</h1>
-    <p>Qui andranno i prodotti</p>
+  <div id="collari" class="pagina">
+    <h1>Collari</h1>
+  </div>
+
+  <div id="guinzagli" class="pagina">
+    <h1>Guinzagli</h1>
+  </div>
+
+  <div id="pettorine" class="pagina">
+    <h1>Pettorine</h1>
+  </div>
+
+  <div id="giochi" class="pagina">
+    <h1>Giochi</h1>
+  </div>
+
+  <div id="poopbag" class="pagina">
+    <h1>Poop Bag</h1>
+  </div>
+
+  <div id="capezze" class="pagina">
+    <h1>Cappezze</h1>
+  </div>
+
+  <div id="cinture" class="pagina">
+    <h1>Cinture</h1>
+  </div>
+
+  <div id="personalizzazione" class="pagina">
+    <h1>Personalizzazione</h1>
   </div>
 
   <div id="contatti" class="pagina">
     <h1>Contatti</h1>
-    <p>Qui i contatti</p>
+  </div>
+
+  <div id="carrello" class="pagina">
+    <h1>Carrello</h1>
   </div>
 
   <!-- SCRIPT -->
@@ -106,13 +158,17 @@
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
 
+    function toggleSubmenu() {
+      const submenu = document.getElementById("submenuProdotti");
+      submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+
     function mostra(pagina) {
       const pagine = document.querySelectorAll(".pagina");
       pagine.forEach(p => p.classList.remove("attiva"));
 
       document.getElementById(pagina).classList.add("attiva");
 
-      // chiude il menu dopo il click (mobile-friendly)
       document.getElementById("menu").style.display = "none";
     }
   </script>
