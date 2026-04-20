@@ -367,6 +367,15 @@ object-fit: cover;
   background: rgba(0,100,90,0.8);
   border-radius: 50%;
 }
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: rgba(0,100,90,0.8);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
     
   </style>
 </head>
@@ -469,8 +478,9 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
 
 
 <div id="collare1" class="pagina white-bg">
+  <button class="back-btn" onclick="indietro()">← Indietro</button>
   <img src="collare1.jpg" class="prodotto-img">
-  <h2>Collare Classico</h2>
+  <h2>KT.COL.BGE.009</h2>
   <p class="descrizione">
     Collare in pelle beige, con borchie oro, cristalli topaz e azzurri
   </p>
@@ -684,7 +694,15 @@ commercial@kithopet.com</p>
       submenu.style.display = submenu.style.display === "block" ? "none" : "block";
     }
 
-    function mostra(pagina, event) {
+    let paginaPrecedente = null;
+
+function mostra(pagina, event) {
+
+  const paginaAttuale = document.querySelector(".pagina.attiva");
+  if (paginaAttuale) {
+    paginaPrecedente = paginaAttuale.id;
+  }
+
   const pagine = document.querySelectorAll(".pagina");
   pagine.forEach(p => p.classList.remove("attiva"));
 
@@ -692,7 +710,7 @@ commercial@kithopet.com</p>
 
   localStorage.setItem("paginaAttiva", pagina);
 
-  // gestione bottoni principali
+  // bottoni bottom bar
   const bottoni = document.querySelectorAll(".bottom-bar button");
   bottoni.forEach(b => b.classList.remove("attivo"));
 
@@ -700,9 +718,8 @@ commercial@kithopet.com</p>
     event.currentTarget.classList.add("attivo");
   }
 
-  // 🔥 MOSTRA SUB BAR SOLO IN PRODOTTI
+  // sub-bar (se ce l'hai)
   const subBar = document.getElementById("subBar");
-
   if (pagina === "prodotti" || 
       ["collari","guinzagli","pettorine","giochi","poopbag","capezze","cinture"].includes(pagina)) {
     subBar.style.display = "flex";
@@ -740,7 +757,11 @@ function mostraSub(pagina, event) {
 }
 
 
-
+function indietro() {
+  if (paginaPrecedente) {
+    mostra(paginaPrecedente);
+  }
+}
     
   </script>
 
