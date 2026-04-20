@@ -208,6 +208,37 @@
 .pagina {
   padding-bottom: 80px;
 }
+
+.prodotti-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.prodotto-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.prodotto-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.prodotto-card p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.prodotto-card:hover {
+  transform: scale(1.03);
+}
     
   </style>
 </head>
@@ -228,7 +259,7 @@
 
   <button onclick="mostra('home')">🏠<br>Home</button>
   <button onclick="mostra('chiSiamo')">👤<br>Chi Siamo</button>
-  <button onclick="mostra('prodotti')">🦴<br>Prodotti</button>
+  <button onclick="mostra('prodotti', event)">🦴<br>Prodotti</button>
   <button onclick="mostra('personalizzazione')">🎨<br>Custom</button>
   <button onclick="mostra('contatti')">📞<br>Contatti</button>
 
@@ -245,7 +276,7 @@
     <p>I prodotti per il tuo amico a quattro zampe</p>
   </div>
 
-  <!-- ALTRE PAGINE -->
+  <!-- PAGINA CHI SIAMO -->
    <div id="chiSiamo" class="pagina chiSiamo-bg">
     <h1>Chi siamo</h1>
     <p>KiTho PET nasce nel 2023 e prende il nome da due simil Rhodesian Ridgeback, Kira e Thor. La loro energia, esuberanza e instancabile voglia di giocare hanno dato vita al progetto. Durante le nostre lunghe passeggiate insieme, in contesti più sereni come la campagna o più impegnativi come la città, ci siamo accorti di alcune caratteristiche necessarie.
@@ -261,7 +292,10 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
     </p>
   </div>
 
-<div id="prodotti" class="pagina">
+
+<!-- PAGINA PRODOTTI -->
+  
+<div id="prodotti" class="pagina white-bg">
 
   <h1>Prodotti</h1>
 
@@ -328,6 +362,9 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
     <h1>Cinture</h1>
   </div>
 
+
+
+  <!-- PAGINA PERSONALIZZAZIONE -->
   <div id="personalizzazione" class="pagina white-bg">
   <h1>Personalizzazione</h1>
 
@@ -385,6 +422,9 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
   </div>
 </div>
  
+
+
+ <!-- PAGINA CONTATTI --> 
   
   <div id="contatti" class="pagina white-bg">
     <h1>Contatti</h1>
@@ -429,7 +469,7 @@ commercial@kithopet.com</p>
 </div>
 
   
-
+<!-- PAGINA CARRELLO - DA SISTEMARE -->
   
   <div id="carrello" class="pagina white-bg">
     <h1>Carrello</h1>
