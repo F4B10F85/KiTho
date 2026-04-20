@@ -390,7 +390,8 @@ img.prodotto-img {
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 12px; /* ↑ aumentato */
+  padding: 10px; /* 🔥 aggiunto */
 }
 
 .card {
@@ -405,6 +406,11 @@ img.prodotto-img {
   position: relative;
   transition: transform 0.5s;
   transform-style: preserve-3d;
+
+  border: 1px solid #ccc;       /* 🔥 bordo sempre */
+  border-radius: 10px;
+  overflow: hidden;             /* 🔥 evita sbordamenti */
+  background: #f8f8f8;          /* 🔥 leggero sfondo */
 }
 
 .card.flipped .card-inner {
@@ -422,7 +428,7 @@ img.prodotto-img {
 
 /* lato nascosto */
 .card-front {
-  background: #f5e6d3;
+  background: #ebfff2;
   border: 1px solid #ccc;
   border-radius: 10px;
 
@@ -441,7 +447,7 @@ img.prodotto-img {
 /* lato immagine */
 .card-back {
   transform: rotateY(180deg);
-  overflow: hidden;
+  background: #f7edfc; /* 🔥 leggero grigio */
 }
 
 .card-back img {
