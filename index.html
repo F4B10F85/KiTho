@@ -276,10 +276,12 @@ object-fit: cover;
 
 .prodotto-img {
   width: 100%;
-  max-height: 200px;   /* 🔥 limite vero */
-  object-fit: contain; /* 🔥 NON taglia */
-  border-radius: 10px;
-  margin-bottom: 15px;
+  max-width: 250px;     /* 🔥 NON supera questa larghezza */
+  height: 150px;        /* 🔥 altezza controllata */
+  object-fit: contain;  /* 🔥 non taglia */
+  
+  display: block;
+  margin: 0 auto 15px auto; /* 🔥 centrata */
 }
 
 .descrizione {
@@ -467,19 +469,13 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
 
 
 <div id="collare1" class="pagina white-bg">
-
   <img src="collare1.jpg" class="prodotto-img">
-
   <h2>Collare Classico</h2>
-
   <p class="descrizione">
     Collare in pelle beige, con borchie oro, cristalli topaz e azzurri
   </p>
-
   <p class="prezzo">€49,00</p>
-
   <button class="btn-acquista">Aggiungi al carrello</button>
-
 </div>
 
 
