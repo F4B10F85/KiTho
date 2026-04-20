@@ -384,35 +384,40 @@ img.prodotto-img {
 
 <!-- PAGINA GIOCO MEMORY -->
 /* GRIGLIA 4x4 */
+/* CONTENITORE CHE OCCUPA LO SCHERMO */
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 20px;
+  gap: 8px;
+
+  height: calc(100vh - 140px); /* 🔥 spazio visibile app */
+  max-height: 500px;
+
+  margin-top: 10px;
 }
 
 /* CARTA */
 .card {
-  aspect-ratio: 1 / 1; /* 🔥 quadrato perfetto */
+  width: 100%;
+  height: 100%; /* 🔥 riempie la cella */
+
   background: white;
   border-radius: 12px;
   border: 1px solid #ccc;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
 }
 
 /* IMMAGINE */
 .card img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 🔥 riempie bene il quadrato */
+  object-fit: cover; /* 🔥 riempie bene */
   display: none;
 }
+
 
 /* QUANDO GIRATA */
 .card.flipped img {
