@@ -383,32 +383,45 @@ img.prodotto-img {
 
 
 <!-- PAGINA GIOCO MEMORY -->
+/* GRIGLIA 4x4 */
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
   margin-top: 20px;
 }
 
+/* CARTA */
 .card {
-  width: 100%;
-  height: 80px;
-  background: #ccc;
-  border-radius: 10px;
+  aspect-ratio: 1 / 1; /* 🔥 quadrato perfetto */
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #ccc;
   cursor: pointer;
+  overflow: hidden;
   position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* IMMAGINE */
 .card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* 🔥 riempie bene il quadrato */
   display: none;
-  border-radius: 10px;
 }
 
+/* QUANDO GIRATA */
 .card.flipped img {
   display: block;
+}
+
+/* EFFETTO CLICK */
+.card:active {
+  transform: scale(0.96);
 }
 
 
@@ -827,16 +840,18 @@ const immagini = [
   "collare1.jpg",
   "collare2.jpg",
   "collare3.jpg",
-  "collare4.jpg"
+  "collare4.jpg",
+  "KT.png",
+  "collare5.jpg",
+  "gioco1.jpg",
+  "gioco2.jpg"
 ];
 
-// duplico per fare coppie
 let carte = [...immagini, ...immagini];
-
-// mescolo
 carte.sort(() => 0.5 - Math.random());
 
 const grid = document.getElementById("memoryGrid");
+grid.innerHTML = "";
 
 let prima = null;
 let blocco = false;
@@ -869,7 +884,7 @@ carte.forEach(src => {
           prima.classList.remove("flipped");
           prima = null;
           blocco = false;
-        }, 800);
+        }, 700);
       }
     }
   };
