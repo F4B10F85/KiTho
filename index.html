@@ -71,6 +71,8 @@
       font-size: 14px;
     }
 
+
+        
     /* PAGINE */
     .pagina {
       display: none;
@@ -320,7 +322,49 @@ object-fit: cover;
 }
 
 
+.sub-bar {
+  position: fixed;
+  bottom: 70px; /* sopra la bottom bar */
+  left: 0;
+  width: 100%;
+  height: 65px;
+  background: white;
 
+  display: none; /* 🔥 nascosta di default */
+  justify-content: space-around;
+  align-items: center;
+
+  border-top: 1px solid #ccc;
+  z-index: 9998;
+}
+
+.sub-bar button {
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: #777;
+  text-align: center;
+
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.sub-bar button.attivo {
+  color: rgba(0,100,90,0.8);
+}
+
+/* pallino */
+.sub-bar button.attivo::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: rgba(0,100,90,0.8);
+  border-radius: 50%;
+}
     
   </style>
 </head>
@@ -347,6 +391,20 @@ object-fit: cover;
 
 </div>
 
+<div id="subBar" class="sub-bar">
+
+  <button onclick="mostraSub('collari', event)">🐕<br>Collari</button>
+  <button onclick="mostraSub('guinzagli', event)">🪢<br>Guinzagli</button>
+  <button onclick="mostraSub('pettorine', event)">🎽<br>Pettorine</button>
+  <button onclick="mostraSub('giochi', event)">🦴<br>Giochi</button>
+  <button onclick="mostraSub('poopbag', event)">💩<br>Poop</button>
+  <button onclick="mostraSub('capezze', event)">🐎<br>Cappezze</button>
+  <button onclick="mostraSub('cinture', event)">🧵<br>Cinture</button>
+
+</div>
+
+
+  
   <!-- HOME -->
   <div id="home" class="pagina attiva home-bg">
     <h1>
@@ -636,18 +694,24 @@ commercial@kithopet.com</p>
 
   document.getElementById(pagina).classList.add("attiva");
 
-  // salva pagina
   localStorage.setItem("paginaAttiva", pagina);
 
-  // gestione bottone attivo
+  // gestione bottoni principali
   const bottoni = document.querySelectorAll(".bottom-bar button");
   bottoni.forEach(b => b.classList.remove("attivo"));
 
   if (event) {
     event.currentTarget.classList.add("attivo");
+  }
 
-    // salva anche il bottone cliccato
-    localStorage.setItem("bottoneAttivo", pagina);
+  // 🔥 MOSTRA SUB BAR SOLO IN PRODOTTI
+  const subBar = document.getElementById("subBar");
+
+  if (pagina === "prodotti" || 
+      ["collari","guinzagli","pettorine","giochi","poopbag","capezze","cinture"].includes(pagina)) {
+    subBar.style.display = "flex";
+  } else {
+    subBar.style.display = "none";
   }
 }
 
@@ -669,6 +733,18 @@ commercial@kithopet.com</p>
     });
   }
 }
+
+function mostraSub(pagina, event) {
+  mostra(pagina);
+
+  const bottoni = document.querySelectorAll(".sub-bar button");
+  bottoni.forEach(b => b.classList.remove("attivo"));
+
+  event.currentTarget.classList.add("attivo");
+}
+
+
+
     
   </script>
 
