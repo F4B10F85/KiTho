@@ -216,13 +216,24 @@
   margin-top: 20px;
 }
 
+.prodotti-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
 .prodotto-card {
   background: white;
   border-radius: 15px;
-  overflow: hidden;
-  text-align: center;
-  cursor: pointer;
   padding: 10px;
+  cursor: pointer;
+  text-align: center;
+
+  border: 1px solid #ccc; /* linea grigia */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+  transition: transform 0.2s ease;
 }
 
 .prodotto-card img {
@@ -238,6 +249,10 @@
 
 .prodotto-card:hover {
   transform: scale(1.03);
+}
+
+.prodotto-card:active {
+  transform: scale(0.97);
 }
     
   </style>
@@ -257,11 +272,11 @@
 
   <div class="bottom-bar">
 
-  <button onclick="mostra('home')">🏠<br>Home</button>
-  <button onclick="mostra('chiSiamo')">👤<br>Chi Siamo</button>
+  <button onclick="mostra('home', event)">🏠<br>Home</button>
+  <button onclick="mostra('chiSiamo', event)">👤<br>Chi Siamo</button>
   <button onclick="mostra('prodotti', event)">🦴<br>Prodotti</button>
-  <button onclick="mostra('personalizzazione')">🎨<br>Custom</button>
-  <button onclick="mostra('contatti')">📞<br>Contatti</button>
+  <button onclick="mostra('personalizzazione', event)">🎨<br>Custom</button>
+  <button onclick="mostra('contatti', event)">📞<br>Contatti</button>
 
 </div>
 
