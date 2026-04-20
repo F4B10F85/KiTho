@@ -382,6 +382,7 @@ img.prodotto-img {
 
 
 /* PAGINA GIOCO MEMORY */
+/* PAGINA GIOCO MEMORY */
 #memory {
   max-width: 400px;
   margin: 0 auto;
@@ -390,14 +391,14 @@ img.prodotto-img {
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px; /* ↑ aumentato */
-  padding: 10px; /* 🔥 aggiunto */
+  gap: 12px;
+  padding: 10px;
 }
 
 .card {
-  perspective: 800px;
   width: 100%;
   aspect-ratio: 1 / 1;
+  perspective: 1000px;
 }
 
 .card-inner {
@@ -406,32 +407,29 @@ img.prodotto-img {
   position: relative;
   transition: transform 0.5s;
   transform-style: preserve-3d;
-
-  border: 1px solid #ccc;       /* 🔥 bordo sempre */
-  border-radius: 10px;
-  overflow: hidden;             /* 🔥 evita sbordamenti */
-  
 }
 
+/* FLIP */
 .card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 
+/* FACCE */
 .card-front,
 .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 10px;
+
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden; /* 🔥 mobile fix */
+  -webkit-backface-visibility: hidden;
 }
 
-/* lato nascosto */
+/* FRONTE */
 .card-front {
-  background: #ebfff2;
+  background: #f5e6d3;
   border: 1px solid #ccc;
-  border-radius: 10px;
 
   display: flex;
   align-items: center;
@@ -440,44 +438,23 @@ img.prodotto-img {
   font-size: 11px;
   font-weight: bold;
   color: rgba(0,100,90,0.8);
-
   text-align: center;
-  padding: 5px;
 }
 
-/* lato immagine */
+/* RETRO (IMMAGINE) */
 .card-back {
   transform: rotateY(180deg);
-  background: #f7edfc; /* 🔥 leggero grigio */
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: hidden;
 }
 
 .card-back img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-}
+} 
 
-#timer {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-#restartBtn {
-  display: block;
-  margin: 15px auto;
-  padding: 10px 20px;
-  background: rgba(0,100,90,0.8);
-  color: white;
-  border: none;
-  border-radius: 8px;
-}
     
   </style>
 </head>
@@ -945,7 +922,7 @@ function avviaGioco() {
   carte.sort(() => 0.5 - Math.random());
 
   carte.forEach(src => {
-    const card = document.createElement("div");
+const card = document.createElement("div");
 card.classList.add("card");
 
 const inner = document.createElement("div");
@@ -954,7 +931,7 @@ inner.classList.add("card-inner");
 const front = document.createElement("div");
 front.classList.add("card-front");
 front.innerHTML = "Memory<br>KiTho";
-    
+
 const back = document.createElement("div");
 back.classList.add("card-back");
 
