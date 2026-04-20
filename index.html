@@ -269,6 +269,41 @@
 height: 80px;
 object-fit: cover;
 
+.prodotto-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.descrizione {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.prezzo {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.btn-acquista {
+  width: 100%;
+  padding: 15px;
+  background: rgba(0,100,90,0.8);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+    
   </style>
 </head>
 
@@ -330,10 +365,16 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
 
   <div class="prodotti-container">
 
-    <div class="prodotto-card" onclick="mostra('collari')">
-      <img src="collari.png" alt="Collari">
-      <p>Collari</p>
-    </div>
+    <div id="collari" class="pagina white-bg">
+  <img src="collari.png" class="prodotto-img">
+  <h1>Collari in pelle</h1>
+  <p class="descrizione">
+    Collari artigianali in pelle di alta qualità, progettati per garantire comfort, resistenza ed eleganza.
+    Personalizzabili con diversi colori, finiture e dettagli.
+  </p>
+  <p class="prezzo">€49,00</p>
+  <button class="btn-acquista">Aggiungi al carrello</button>
+</div>
 
     <div class="prodotto-card" onclick="mostra('guinzagli')">
       <img src="guinzaglio.png" alt="Guinzagli">
