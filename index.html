@@ -395,6 +395,8 @@ img.prodotto-img {
 
 .card {
   perspective: 800px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .card-inner {
@@ -419,11 +421,21 @@ img.prodotto-img {
 }
 
 /* lato nascosto */
-.card-front::after {
-  content: "Memory KiTho";
+.card-front {
+  background: #f5e6d3;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-size: 11px;
-  letter-spacing: 1px;
-  opacity: 0.7;
+  font-weight: bold;
+  color: rgba(0,100,90,0.8);
+
+  text-align: center;
+  padding: 5px;
 }
 
 /* lato immagine */
@@ -928,7 +940,8 @@ inner.classList.add("card-inner");
 
 const front = document.createElement("div");
 front.classList.add("card-front");
-
+front.innerText = "Memory KiTho";
+    
 const back = document.createElement("div");
 back.classList.add("card-back");
 
