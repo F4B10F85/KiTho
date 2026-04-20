@@ -383,36 +383,35 @@ img.prodotto-img {
 
 
 <!-- PAGINA GIOCO MEMORY -->
-#memoryGrid {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 8px;
-  padding: 10px;
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 8px;
 }
 
-#memoryGrid .card {
+.card {
   width: 100%;
   aspect-ratio: 1 / 1;
-  
+
   background: white;
   border: 1px solid #ccc;
-  border-radius: 12px;
+  border-radius: 10px;
 
   overflow: hidden;
   cursor: pointer;
 }
 
-#memoryGrid .card img {
+.card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: none;
 }
 
-#memoryGrid .card.flipped img {
+.card.flipped img {
   display: block;
 }
-
 
 
 
