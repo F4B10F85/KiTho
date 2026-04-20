@@ -413,7 +413,21 @@ img.prodotto-img {
   display: block;
 }
 
+#timer {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
+#restartBtn {
+  display: block;
+  margin: 15px auto;
+  padding: 10px 20px;
+  background: rgba(0,100,90,0.8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
     
   </style>
 </head>
@@ -725,7 +739,18 @@ commercial@kithopet.com</p>
 
 <div id="memory" class="pagina white-bg">
   <h1>Gioca con KiTho</h1>
-<div id="memoryGrid" class="memory-grid"></div>
+
+  <p id="timer">Tempo: 0s</p>
+
+  <div id="memoryGrid" class="memory-grid"></div>
+
+  <p id="vittoria" style="display:none; font-weight:bold; margin-top:15px;">
+    🎉 Hai vinto!
+  </p>
+
+  <button id="restartBtn" style="display:none; margin-top:10px;">
+    Gioca ancora
+  </button>
 </div>
 
 
@@ -820,6 +845,9 @@ function indietro() {
 }
 
 
+
+
+    
 const immagini = [
   "collare1.jpg",
   "collare2.jpg",
@@ -831,50 +859,92 @@ const immagini = [
   "gioco2.jpg"
 ];
 
-let carte = [...immagini, ...immagini];
-carte.sort(() => 0.5 - Math.random());
-
-const grid = document.getElementById("memoryGrid");
-grid.innerHTML = "";
-
 let prima = null;
 let blocco = false;
+let trovate = 0;
 
-carte.forEach(src => {
-  const card = document.createElement("div");
-  card.classList.add("card");
+let timer = 0;
+let intervallo;
 
-  const img = document.createElement("img");
-  img.src = src;
+function avviaGioco() {
 
-  card.appendChild(img);
+  const grid = document.getElementById("memoryGrid");
+  const vittoria = document.getElementById("vittoria");
+  const restartBtn = document.getElementById("restartBtn");
 
-  card.onclick = () => {
-    if (blocco || card.classList.contains("flipped")) return;
+  grid.innerHTML = "";
+  vittoria.style.display = "none";
+  restartBtn.style.display = "none";
 
-    card.classList.add("flipped");
+  prima = null;
+  blocco = false;
+  trovate = 0;
 
-    if (!prima) {
-      prima = card;
-    } else {
-      blocco = true;
+  // TIMER RESET
+  timer = 0;
+  document.getElementById("timer").innerText = "Tempo: 0s";
+  clearInterval(intervallo);
 
-      if (prima.querySelector("img").src === img.src) {
-        prima = null;
-        blocco = false;
+  intervallo = setInterval(() => {
+    timer++;
+    document.getElementById("timer").innerText = "Tempo: " + timer + "s";
+  }, 1000);
+
+  let carte = [...immagini, ...immagini];
+  carte.sort(() => 0.5 - Math.random());
+
+  carte.forEach(src => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const img = document.createElement("img");
+    img.src = src;
+
+    card.appendChild(img);
+
+    card.onclick = () => {
+      if (blocco || card.classList.contains("flipped")) return;
+
+      card.classList.add("flipped");
+
+      if (!prima) {
+        prima = card;
       } else {
-        setTimeout(() => {
-          card.classList.remove("flipped");
-          prima.classList.remove("flipped");
+        blocco = true;
+
+        if (prima.querySelector("img").src === img.src) {
+          trovate++;
+
           prima = null;
           blocco = false;
-        }, 700);
-      }
-    }
-  };
 
-  grid.appendChild(card);
-});
+          // 🎉 VITTORIA
+          if (trovate === immagini.length) {
+            clearInterval(intervallo);
+            vittoria.style.display = "block";
+            restartBtn.style.display = "block";
+          }
+
+        } else {
+          setTimeout(() => {
+            card.classList.remove("flipped");
+            prima.classList.remove("flipped");
+            prima = null;
+            blocco = false;
+          }, 700);
+        }
+      }
+    };
+
+    grid.appendChild(card);
+  });
+}
+
+// pulsante restart
+document.getElementById("restartBtn").onclick = avviaGioco;
+
+// avvio iniziale
+avviaGioco();
 
 
 
