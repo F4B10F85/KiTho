@@ -211,50 +211,47 @@
 
 .prodotti-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
   margin-top: 20px;
-}
-
-.prodotti-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-top: 20px;
+  padding: 0 10px;
 }
 
 .prodotto-card {
   background: white;
-  border-radius: 15px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 8px;
   cursor: pointer;
   text-align: center;
 
-  border: 1px solid #ccc; /* linea grigia */
+  border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 
-  transition: transform 0.2s ease;
+  transition: transform 0.15s ease;
 }
 
 .prodotto-card img {
   width: 100%;
-  border-radius: 10px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .prodotto-card p {
-  margin-top: 10px;
-  font-weight: bold;
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: 12px;
   color: #333;
 }
 
-.prodotto-card:hover {
-  transform: scale(1.03);
-}
-
+/* Effetti */
 .prodotto-card:active {
-  transform: scale(0.97);
-}
-    
+  transform: scale(0.95);
+}    
+
+height: 80px;
+object-fit: cover;
+
   </style>
 </head>
 
@@ -515,12 +512,25 @@ commercial@kithopet.com</p>
 
   document.getElementById(pagina).classList.add("attiva");
 
-  // gestione bottone attivo
-  const bottoni = document.querySelectorAll(".bottom-bar button");
-  bottoni.forEach(b => b.classList.remove("attivo"));
+  // salva pagina attiva
+  localStorage.setItem("paginaAttiva", pagina);
 
-  event.currentTarget.classList.add("attivo");
+  // gestione bottone attivo
+  if (event) {
+    const bottoni = document.querySelectorAll(".bottom-bar button");
+    bottoni.forEach(b => b.classList.remove("attivo"));
+    event.currentTarget.classList.add("attivo");
+  }
 }
+
+    window.onload = function() {
+  const paginaSalvata = localStorage.getItem("paginaAttiva");
+
+  if (paginaSalvata) {
+    mostra(paginaSalvata);
+  }
+}
+    
   </script>
 
 </body>
