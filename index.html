@@ -274,11 +274,10 @@
 height: 80px;
 object-fit: cover;
 
-.prodotto-img {
+img.prodotto-img {
+  width: 200px !important;
+  height: auto !important;
   display: block;
-  width: 80%;
-  max-width: 250px;
-  height: auto;
   margin: 0 auto 15px auto;
 }
 
@@ -477,7 +476,7 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
 
 <div id="collare1" class="pagina white-bg">
   <button class="back-btn" onclick="indietro()">← Indietro</button>
-  <img src="collare1.jpg" style="width: 100px;">
+  <img src="collare1.jpg" class="prodotto-img">
   <h2>KT.COL.BGE.009</h2>
   <p class="descrizione">
     Collare in pelle beige, con borchie oro, cristalli topaz e azzurri
