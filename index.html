@@ -199,9 +199,24 @@
   cursor: pointer;
 }
 
+.bottom-bar button {
+  position: relative;
+}
+
 .bottom-bar button.attivo {
   color: black;
-  border-top: 2px solid black;
+}
+
+.bottom-bar button.attivo::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: black;
+  border-radius: 50%;
 }
 
 
@@ -232,8 +247,7 @@
 
 .prodotto-card img {
   width: 100%;
-  height: 80px;
-  object-fit: cover;
+  height: auto;
   border-radius: 8px;
 }
 
@@ -512,14 +526,18 @@ commercial@kithopet.com</p>
 
   document.getElementById(pagina).classList.add("attiva");
 
-  // salva pagina attiva
+  // salva pagina
   localStorage.setItem("paginaAttiva", pagina);
 
   // gestione bottone attivo
+  const bottoni = document.querySelectorAll(".bottom-bar button");
+  bottoni.forEach(b => b.classList.remove("attivo"));
+
   if (event) {
-    const bottoni = document.querySelectorAll(".bottom-bar button");
-    bottoni.forEach(b => b.classList.remove("attivo"));
     event.currentTarget.classList.add("attivo");
+
+    // salva anche il bottone cliccato
+    localStorage.setItem("bottoneAttivo", pagina);
   }
 }
 
@@ -528,6 +546,17 @@ commercial@kithopet.com</p>
 
   if (paginaSalvata) {
     mostra(paginaSalvata);
+
+    // evidenzia il bottone giusto
+    const bottoni = document.querySelectorAll(".bottom-bar button");
+
+    bottoni.forEach(b => {
+      b.classList.remove("attivo");
+
+      if (b.getAttribute("onclick").includes(paginaSalvata)) {
+        b.classList.add("attivo");
+      }
+    });
   }
 }
     
