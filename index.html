@@ -303,7 +303,21 @@ object-fit: cover;
 }
 
 
+/* GRIGLIA PRODOTTI (3 colonne) */
+.prodotti-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
 
+/* GRIGLIA SOTTOCATEGORIE (2 colonne) */
+.sottocategoria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
 
 
 
@@ -365,13 +379,43 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
 
 <div id="collari" class="pagina white-bg">
 
-  <img src="collari.png" class="prodotto-img">
+  <h1>Collari</h1>
 
-  <h2>Collari in pelle</h2>
+  <div class="sottocategoria-grid">
+
+    <div class="prodotto-card" onclick="mostra('collare1')">
+      <img src="collare1.png">
+      <p>Collare Classico</p>
+    </div>
+
+    <div class="prodotto-card" onclick="mostra('collare2')">
+      <img src="collare2.png">
+      <p>Collare Elegance</p>
+    </div>
+
+    <div class="prodotto-card" onclick="mostra('collare3')">
+      <img src="collare3.png">
+      <p>Collare Sport</p>
+    </div>
+
+    <div class="prodotto-card" onclick="mostra('collare4')">
+      <img src="collare4.png">
+      <p>Collare Luxury</p>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="collare1" class="pagina white-bg">
+
+  <img src="collare1.png" class="prodotto-img">
+
+  <h2>Collare Classico</h2>
 
   <p class="descrizione">
-    Collari artigianali in pelle di alta qualità, progettati per garantire comfort, resistenza ed eleganza.
-    Personalizzabili con diversi colori, finiture e dettagli.
+    Collare in pelle morbida, resistente ed elegante.
   </p>
 
   <p class="prezzo">€49,00</p>
@@ -379,6 +423,8 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
   <button class="btn-acquista">Aggiungi al carrello</button>
 
 </div>
+
+
 
 
   
@@ -389,7 +435,7 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
 
   <h1>Prodotti</h1>
 
-  <div class="prodotti-container">
+  <div class="prodotti-grid">
 
      <div class="prodotto-card" onclick="mostra('collari')">
       <img src="collari.png" alt="Collari">
