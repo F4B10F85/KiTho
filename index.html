@@ -260,10 +260,11 @@
   object-fit: contain; /* NON taglia */
 }
 
-.prodotto-card p {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 600;
+.prodotto-img {
+  width: 200px;
+  max-width: 80%;
+  display: block;
+  margin: 0 auto 15px auto;
 }
 
 /* Effetti */
@@ -271,8 +272,6 @@
   transform: scale(0.95);
 }    
 
-height: 80px;
-object-fit: cover;
 
 img.prodotto-img {
   width: 200px !important;
@@ -382,24 +381,25 @@ img.prodotto-img {
 }
 
 
-<!-- PAGINA GIOCO MEMORY -->
+/* PAGINA GIOCO MEMORY */
+#memory {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  padding: 8px;
+  gap: 8px;
 }
 
 .card {
   width: 100%;
   aspect-ratio: 1 / 1;
-
   background: white;
   border: 1px solid #ccc;
   border-radius: 10px;
-
   overflow: hidden;
-  cursor: pointer;
 }
 
 .card img {
@@ -412,7 +412,6 @@ img.prodotto-img {
 .card.flipped img {
   display: block;
 }
-
 
 
     
@@ -526,7 +525,7 @@ Dopo diversi test abbiamo capito che i prodotti KiTho PET dovevano essere caratt
 
 <div id="collare1" class="pagina white-bg">
   <button class="back-btn" onclick="indietro()">← Indietro</button>
-  <img src="collare1.jpg" style="width: 200px;">
+  <img src="collare1.jpg" class="prodotto-img">
   <h2>KT.COL.BGE.009</h2>
   <p class="descrizione">
     Collare in pelle beige, con borchie oro, cristalli topaz e azzurri
