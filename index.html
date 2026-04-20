@@ -394,23 +394,48 @@ img.prodotto-img {
 }
 
 .card {
+  perspective: 800px;
+}
+
+.card-inner {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  background: white;
-  border: 1px solid #ccc;
+  height: 100%;
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   border-radius: 10px;
+}
+
+/* lato nascosto */
+.card-front::after {
+  content: "Memory KiTho";
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+/* lato immagine */
+.card-back {
+  transform: rotateY(180deg);
   overflow: hidden;
 }
 
-.card img {
+.card-back img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
-}
-
-.card.flipped img {
-  display: block;
 }
 
 #timer {
@@ -896,13 +921,24 @@ function avviaGioco() {
 
   carte.forEach(src => {
     const card = document.createElement("div");
-    card.classList.add("card");
+card.classList.add("card");
 
-    const img = document.createElement("img");
-    img.src = src;
+const inner = document.createElement("div");
+inner.classList.add("card-inner");
 
-    card.appendChild(img);
+const front = document.createElement("div");
+front.classList.add("card-front");
 
+const back = document.createElement("div");
+back.classList.add("card-back");
+
+const img = document.createElement("img");
+img.src = src;
+
+back.appendChild(img);
+inner.appendChild(front);
+inner.appendChild(back);
+card.appendChild(inner);
     card.onclick = () => {
       if (blocco || card.classList.contains("flipped")) return;
 
