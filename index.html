@@ -181,26 +181,34 @@
   left: 0;
   width: 100%;
   height: 70px;
-  background: rgba(0,100,90,0.95);
+  background: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 9999;
+
+  border-top: 1px solid #ccc; /* linea grigia sottile */
 }
 
 .bottom-bar button {
   background: none;
   border: none;
-  color: white;
+  color: #333; /* scuro, così si vede */
   font-size: 12px;
   text-align: center;
   cursor: pointer;
 }
 
+.bottom-bar button.attivo {
+  color: black;
+  font-weight: bold;
+}
+
+<!--
 .bottom-bar button:hover {
   opacity: 0.7;
 }
-
+-->
 .pagina {
   padding-bottom: 80px;
 }
@@ -405,14 +413,18 @@ commercial@kithopet.com</p>
       submenu.style.display = submenu.style.display === "block" ? "none" : "block";
     }
 
-    function mostra(pagina) {
-      const pagine = document.querySelectorAll(".pagina");
-      pagine.forEach(p => p.classList.remove("attiva"));
+    function mostra(pagina, event) {
+  const pagine = document.querySelectorAll(".pagina");
+  pagine.forEach(p => p.classList.remove("attiva"));
 
-      document.getElementById(pagina).classList.add("attiva");
+  document.getElementById(pagina).classList.add("attiva");
 
-      document.getElementById("menu").style.display = "none";
-    }
+  // gestione bottone attivo
+  const bottoni = document.querySelectorAll(".bottom-bar button");
+  bottoni.forEach(b => b.classList.remove("attivo"));
+
+  event.currentTarget.classList.add("attivo");
+}
   </script>
 
 </body>
